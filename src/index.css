@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	.hover-underline {
+		position: relative;
+	}
+}
+
+@layer utilities {
+	.active-link {
+		--blue: theme(colors.blue.300);
+		color: var(--blue);
+	}
+
+	.hover-underline::after {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		border-bottom: 2px solid white;
+		transition: transform 200ms ease-in-out;
+		transform: scaleX(0);
+		transform-origin: center;
+	}
+
+	.hover-underline.active-link::after {
+		--blue: theme(colors.blue.300);
+		border-bottom-color: var(--blue);
+	}
+
+	.hover-underline:hover::after {
+		transform: scaleX(1);
+	}
+
+	.two-line-ellipsis {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+	}
+}
